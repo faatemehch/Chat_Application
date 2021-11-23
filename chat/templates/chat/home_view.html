@@ -1,0 +1,52 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <hr>
+        <h3 class="text-center text-success" id="main-title">Chat Application</h3>
+        <hr>
+    </div>
+    <div class="container">
+        <hr>
+        {% if not request.user.is_authenticated %}
+            <a class="btn btn-warning text-light">Login <i class="fa fa-sign-in"></i></a>
+            <a class="btn btn-info text-light">Register <i class="fa fa-registered"></i></a>
+        {% else %}
+            <a class="btn btn-dark text-light">Logout<i class="fa fa-sign-out"></i></a>
+        {% endif %}
+        <br>
+        <hr>
+    </div>
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <!-- <div class="col col-3"></div> -->
+            <div class="col-6">
+                <form method="post" action="{% url 'chat:chat-room' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Name:</label>
+                        <input type="text" class="form-control" id="username"
+                               placeholder="Enter Your Name" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="room_name">Group Name:</label>
+                        <input type="text" class="form-control"
+                               placeholder="Enter Your Group" name="room_name" id="room_name">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success btn-block" type="submit">GO</button>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="col-3"></div> -->
+        </div>
+    </div>
+    <div class="container">
+        <hr>
+        <p class="text-center">Django Chat Application</p>
+        <hr>
+    </div>
+{% endblock %}
