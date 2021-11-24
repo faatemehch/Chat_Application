@@ -11,9 +11,12 @@ def home_view(request):
 @login_required
 def room(request, room_name, username):
     room = Room.objects.get( room_name=room_name )
+    messages = room.message_set.all()
     context = {
         'title': f'Chat App | {room.room_name}',
         'room': room,
+        'messages': messages,
+        'username': username
 
     }
     return render( request, 'chat/chat-room.html', context )
@@ -29,5 +32,5 @@ def check_room(request):
             room = Room.objects.create( room_name=request.POST['room_name'] )
             room.save()
         return redirect( 'chat:room', room_name=room_name, username=username )
-
+        # return redirect( '/' + room_name + '/?username=' + username )
     return redirect( 'chat:home-view' )

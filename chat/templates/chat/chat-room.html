@@ -20,50 +20,14 @@
                 <h5 class="text-center">Room: {{ room.room_name }}</h5>
                 <hr>
             </div>
-            <div class="alert alert-success pull-left" role="alert">
-                <h6><b>jack</b></h6>
-                <p>Hello!</p>
-                <span>20th Ag.13:10</span>
-            </div>
-            <div class="alert alert-secondary pull-right" role="alert">
-                <h6><b>albert</b></h6>
-                <p>Hi ...</p>
-                <span>20th Ag.13:10</span>
-            </div>
-            <div class="alert alert-success pull-left" role="alert">
-                <h6><b>jack</b></h6>
-                <p>Whats's up</p>
-                <span>20th Ag.13:10</span>
-            </div>
-            <div class="alert alert-secondary pull-right" role="alert">
-                <h6><b>albert</b></h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quis, facilis adipisci totam eius optio
-                    officia, non ullam</p>
-                <span class="time-left">20th Ag.13:10</span>
-            </div>
-            <div class="alert alert-secondary pull-right" role="alert">
-                <h6><b>albert</b></h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quis, facilis adipisci totam eius optio
-                    officia, non ullam</p>
-                <span>20th Ag.13:10</span>
-            </div>
-            <div class="alert alert-secondary pull-right" role="alert">
-                <h6><b>albert</b></h6>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis fugiat natus ullam sunt fugit
-                    perferendis nostrum reprehenderit. Nostrum ipsum similique quis nisi repellendus incidunt eos,
-                    corrupti
-                    quo perspiciatis odit assumenda.F</p>
-                <span>20th Ag.13:10</span>
-            </div>
-            <div class="alert alert-success pull-left" role="alert">
-                <h6><b>jack</b></h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ea placeat distinctio veritatis
-                    explicabo
-                    suscipit laboriosam id ipsam adipisci fugiat, accusantium excepturi error. Odit laborum voluptas,
-                    dolorem aut odio enim corporis officiis quasi quidem perspiciatis quam quis sapiente vel, ipsum
-                    molestiae natus dolor, nulla deserunt maiores temporibus atque iste sint?</p>
-                <span>20th Ag.13:10</span>
-            </div>
+            {% for msg in messages %}
+                <div class="alert {% if msg.owner.username == username %} alert-light pull-right {% else %} alert-success pull-left{% endif %}"
+                     role="alert">
+                    <h6><b>{{ msg.owner.username }}</b></h6>
+                    <p>{{ msg.message_text }}</p>
+                    <span>{{ msg.date_added|date:'D:m:Y - h:i a' }}</span>
+                </div>
+            {% endfor %}
 
         </div>
         <div class="input-group mb-3 mt-2 pr-2 pl-2" id="input-box">
