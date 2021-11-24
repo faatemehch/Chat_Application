@@ -1,5 +1,4 @@
 {% extends 'shared/_MainLayout.html' %}
-{% load static %}
 {% block title %}
     {{ title }}
 {% endblock %}
@@ -29,12 +28,12 @@
                     <div class="form-group">
                         <label for="username">Name:</label>
                         <input type="text" class="form-control" id="username"
-                               placeholder="Enter Your Name" name="username">
+                               placeholder="Enter Your Name" name="username" required>
                     </div>
                     <div class="form-group">
                         <label for="room_name">Group Name:</label>
                         <input type="text" class="form-control"
-                               placeholder="Enter Your Group" name="room_name" id="room_name">
+                               placeholder="Enter Your Group" name="room_name" id="room_name" required>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-success btn-block" type="submit">GO</button>

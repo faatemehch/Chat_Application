@@ -8,11 +8,13 @@ def home_view(request):
     return render( request, 'chat/home_view.html', context )
 
 
-def room(request, room_name):
+@login_required
+def room(request, room_name, username):
     room = Room.objects.get( room_name=room_name )
     context = {
         'title': f'Chat App | {room.room_name}',
         'room': room,
+
     }
     return render( request, 'chat/chat-room.html', context )
 
@@ -26,6 +28,6 @@ def check_room(request):
         if room is None:
             room = Room.objects.create( room_name=request.POST['room_name'] )
             room.save()
-        return redirect( 'chat:room', room_name )
-        # return redirect( '/' + room_name + '/?username=' + username )
+        return redirect( 'chat:room', room_name=room_name, username=username )
+
     return redirect( 'chat:home-view' )

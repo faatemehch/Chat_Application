@@ -6,5 +6,5 @@ app_name = 'chat'
 urlpatterns = [
     path( '', home_view, name='home-view' ),
     path( 'chat/', check_room, name='chat-room' ),
-    path( '<str:room_name>/', room, name='room' ),
+    path( '<str:room_name>/<str:username>', room, name='room' ),
 ]
