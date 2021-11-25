@@ -20,27 +20,87 @@
                 <h5 class="text-center">Room: {{ room.room_name }}</h5>
                 <hr>
             </div>
-            {% for msg in messages %}
-                <div class="alert {% if msg.owner.username == username %} alert-light pull-right {% else %} alert-success pull-left{% endif %}"
-                     role="alert">
-                    <h6><b>{{ msg.owner.username }}</b></h6>
-                    <p>{{ msg.message_text }}</p>
-                    <span>{{ msg.date_added|date:'D:m:Y - h:i a' }}</span>
-                </div>
-            {% endfor %}
+            <div id="chat">
+
+            </div>
+            {#            {% for msg in messages %}#}
+            {#                <div class="alert {% if msg.owner.username == username %} alert-light pull-right {% else %} alert-success pull-left{% endif %}"#}
+            {#                     role="alert">#}
+            {#                    <h6><b>{{ msg.owner.username }}</b></h6>#}
+            {#                    <p>{{ msg.message_text }}</p>#}
+            {#                    <span>{{ msg.date_added|date:'D:m:Y - h:i a' }}</span>#}
+            {#                </div>#}
+            {#            {% endfor %}#}
 
         </div>
-        <div class="input-group mb-3 mt-2 pr-2 pl-2" id="input-box">
-            <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
-                   aria-describedby="button-addon1">
-            <div class="input-group-prepend">
-                <button class="btn btn-success" type="submit" id="button-addon1"><i class="fa fa-send"></i></button>
+        <form id="send" method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3 mt-2 pr-2 pl-2" id="input-box">
+                <input type="text" class="form-control" placeholder="Write Your Message"
+                       aria-label="Example text with button addon"
+                       aria-describedby="button-addon1" required id="send-input">
+                <div class="input-group-prepend">
+                    <a class="btn btn-success" type="submit" id="send-btn" href="{% url 'chat:send_message' %}"><i
+                            class="fa fa-send"></i></a>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <div class="container">
         <hr>
         <p class="text-center">chat application with django</p>
         <hr>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $('#send-btn').click(function (event) {
+            event.preventDefault();
+            var url = this.href
+            var room = '{{ room.room_name }}'
+            $.ajax({
+                {#method: "POST",#}
+                {#type: "POST",#}
+                url: url,
+                data: {
+                    'form_data': $('#send-input').val(),
+                    'room_name': room
+                },
+                success: function (response) {
+                    console.log(response + ' from send')
+                    $("#send").trigger('reset'); //reset the form
+                }
+            });
+            {#return false;#}
+        });
+
+        // getting all messages for the current room using ajax (not django template)
+        $(document).ready(function () {
+            // updated every one second
+            setInterval(function () {
+                var href = '{% url 'chat:get_messages' room_name=room.room_name %}'
+                $.ajax({
+                    type: 'GET',
+                    url: href,
+                    success: function (response) {
+                        console.log(response + ' from get');
+                        $("#chat").empty();
+                        for (var msg in response.messages) {
+                            // msg is a number
+                            console.log(response.pulls[msg])
+                            if (response.pulls[msg] === 'right') {
+                                var temp = "<div class='alert alert-light pull-" + response.pulls[msg] + "' role=\"alert\"> <h6><b>" + response.user_name[msg] + "</b></h6><p>" + response.messages[msg].message_text + "</p> <span>" + response.messages[msg].date_added + "</span></div>";
+                            }
+                        else {
+                             var temp = "<div class='alert alert-success pull-" + response.pulls[msg] + "' role=\"alert\"> <h6><b>" + response.user_name[msg] + "</b></h6><p>" + response.messages[msg].message_text + "</p> <span>" + response.messages[msg].date_added + "</span></div>";
+                            }
+                            $("#chat").append(temp);
+                        }
+                    },
+                    error: function (response) {
+                        {#console.log(response)#}
+                    }
+                });
+            }, 1000);
+        })
+    </script>
 {% endblock %}

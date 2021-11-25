@@ -12,15 +12,17 @@
     border-radius: 30px;
     background-color: tomato;
 }
-#main h6{
+
+#main h6 {
     font-size: 30%;
     color: black;
     font-weight: 3px;
 }
-#main span{
-     font-size: 30%;
-     color: black;
-     font-weight: 3px;
+
+#main span {
+    font-size: 30%;
+    color: black;
+    font-weight: 3px;
 }
 
 #chat-box {
@@ -31,17 +33,21 @@
     border-radius: 30px;
     overflow: auto;
 }
-#input-box{
+
+#input-box {
     margin: 0 auto;
     width: 80%;
 }
-#input-box button {
+
+#send-btn {
     border-radius: 100px;
 }
+
 #input-box input {
     border-radius: 7px;
 }
-.alert{
+
+.alert {
     width: 60%;
     text-align: justify;
     border-radius: 15px;
