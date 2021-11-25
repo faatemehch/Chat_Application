@@ -39,8 +39,6 @@ def check_room(request):
 
 
 def send_message(request):
-    # print( request.GET )
-
     if request.is_ajax():
         form_data, room_name = request.GET.get( ['form_data'][0] ), request.GET.get(
             ['room_name'][0] )  # data from send form
@@ -65,6 +63,6 @@ def get_messages(request, room_name):
     context = {
         'messages': list( messages.values() ),
         'user_name': username,
-        'pulls':pull
+        'pulls': pull
     }
     return JsonResponse( context )

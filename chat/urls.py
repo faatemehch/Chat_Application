@@ -5,7 +5,7 @@ app_name = 'chat'
 
 urlpatterns = [
     path( '', home_view, name='home-view' ),
-    path( 'chat/', check_room, name='chat-room' ),
+    path( 'chat-room/', check_room, name='chat-room' ),
     path( '<str:room_name>/', room, name='room' ),
     path( 'send_message', send_message, name='send_message' ),
     path( 'get_messages/<str:room_name>', get_messages, name='get_messages' ),
