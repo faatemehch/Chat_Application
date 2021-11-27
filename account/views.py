@@ -9,6 +9,7 @@ from .forms import LoginForm, RegisterForm
 
 # login view implemented by function base view
 def login_view(request):
+    print(request.GET)
     if request.user.is_authenticated:
         return redirect( 'chat:home-view' )
     login_form = LoginForm( request.POST or None )
@@ -19,7 +20,7 @@ def login_view(request):
         if user is not None:
             login( request, user )
             return redirect( 'chat:home-view' )
-    context = {'form': login_form, 'title': 'Chat | Login'}
+    context = {'login_form': login_form, 'title': 'Chat | Login'}
     return render( request, 'account/login-view.html', context )
 
 
