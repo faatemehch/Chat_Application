@@ -10,7 +10,7 @@ def home_view(request):
     return render( request, 'chat/home_view.html', context )
 
 
-@login_required
+@login_required(login_url='account:login-user')
 def room(request, room_name):
     print( 'room_name', room_name )
     room = Room.objects.get( room_name=room_name )
@@ -25,7 +25,7 @@ def room(request, room_name):
     return render( request, 'chat/chat-room.html', context )
 
 
-@login_required
+@login_required(login_url='account:login-user')
 def check_room(request):
     room_name = request.POST['room_name']
     if request.method == 'POST':
