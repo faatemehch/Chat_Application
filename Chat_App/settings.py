@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'forgot_password.apps.ForgotPasswordConfig',
     'chat',
+    'private_chat',
     'account',
 ]
 
