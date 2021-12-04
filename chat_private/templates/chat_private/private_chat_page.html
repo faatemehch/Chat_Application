@@ -23,104 +23,29 @@
                 <div>
                     <table class="table">
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">7</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">8</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">9</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">10</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">11</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">12</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">13</th>
-                            <td>Larry</td>
-                            <td>
-                                <button class="btn btn-warning">Chat</button>
-                            </td>
-                        </tr>
+                        {% for contact in contacts %}
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>{{ contact }}</td>
+                                <td>
+                                    <a class="btn btn-warning"
+                                       href="{% url 'chat_private:private-chat' user_1_id=contact.user_1.id user_2_id=contact.user_2.id %}">Chat</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-7 bg-light">
                 <div id="private_chat_col" class="shadow bg-dark">
-                    <h6 class="text-center text-light mt-2 mb-2">Jack</h6>
+                    <h6 class="text-center text-light mt-2 mb-2">
+                        {% if private_chat_.user_1.username == request.user.username %}
+                            {{ private_chat_.user_2 }}
+                        {% else %}
+                            {{ private_chat_.user_1 }}
+                        {% endif %}
+                    </h6>
                     <hr class="bg-light">
                     <div class="p-3 m-1">
                         <div class="alert alert-secondary pull-right shadow" role="alert">

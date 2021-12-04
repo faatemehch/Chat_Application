@@ -6,15 +6,16 @@ from .models import PrivateRequest, PrivateChat
 
 
 @login_required( login_url='account:login-user' )
-def private_chat(request, user_id):
-    user_1 = request.user
-    user_2 = User.objects.filter( id=user_id ).first()
-    # look_up = (Q( users__username__contains=user_2.username ) & Q( users__username__contains=user_1.username ))
-    # private_chat_ = PrivateChat.objects.filter( look_up ).all()
-    private_chat_: PrivateChat = (PrivateChat.objects.filter( users__username__icontains=user_1.username ) & \
-                                  PrivateChat.objects.filter( users__username__icontains=user_2.username )).first()
-    print( private_chat_ )
-    context = {}
+def private_chat(request, user_1_id,user_2_id):
+    user_1 = User.objects.filter( id=user_1_id ).first()
+    user_2 = User.objects.filter( id=user_2_id ).first()
+    look_up = (Q( user_1=user_1 ) & Q( user_2=user_2 ) | Q( user_1=user_2 ) & Q( user_2=user_1 ))
+    private_chat_: PrivateChat = PrivateChat.objects.filter( look_up ).first()
+    look_up = (Q( user_1=user_1 ) | Q( user_1=user_2 ))
+    context = {
+        'private_chat_': private_chat_,
+        'contacts': PrivateChat.objects.filter( look_up ).distinct()
+    }
     return render( request, 'chat_private/private_chat_page.html', context )
 
 

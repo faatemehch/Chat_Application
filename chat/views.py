@@ -17,7 +17,6 @@ def room(request, room_name):
         'username': request.user.username,
         'room' : room
     }
-
     return render( request, 'chat/chat-room.html', context )
 
 

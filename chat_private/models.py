@@ -4,10 +4,13 @@ from django.db import models
 
 # private room between 2 users
 class PrivateChat( models.Model ):
-    users = models.ManyToManyField( User, help_text='users in a private chat' )
+    user_1 = models.ForeignKey( User, help_text='first user in a private chat', on_delete=models.CASCADE,
+                                related_name='first_user', null=True )
+    user_2 = models.ForeignKey( User, help_text='second user in a private chat', on_delete=models.CASCADE,
+                                related_name='second_user', null=True )
 
     def __str__(self):
-        return f'{self.users.first()} - {self.users.last()}'
+        return f'{self.user_1} - {self.user_2}'
 
 
 # send request from one user to another and the private message created if the second one accepted
