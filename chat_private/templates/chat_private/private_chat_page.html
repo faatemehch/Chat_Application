@@ -1,0 +1,263 @@
+{% extends 'shared/_MainLayout.html' %}
+{% block title %}
+    Chat | private chat
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <hr>
+        <h3 class="text-center text-success" id="main-title">Chat Application</h3>
+        <h5 class="text-center text-danger">Welcome To Private Chat</h5>
+        <hr>
+    </div>
+    <div class="container">
+        <a class="btn btn-danger text-light">Go Back <i class="fa fa-backward"></i></a>
+        <a class="btn btn-info text-light pull-right">Privat Chat Setting <i class="fa fa-backward"></i></a>
+        <!-- <a class="btn btn-warning text-light">Login <i class="fa fa-sign-in"></i></a>
+        <a class="btn btn-info text-light">Register <i class="fa fa-registered"></i></a> -->
+        <hr>
+    </div>
+    <div class="container shadow">
+        <div class="row">
+            <div class="col-lg-3 col-sm-5 bg-info" id="contact_list">
+                <h5 class="text-center mt-2">Contacts</h5>
+                <div>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">11</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">12</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">13</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-warning">Chat</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-7 bg-light">
+                <div id="private_chat_col" class="shadow bg-dark">
+                    <h6 class="text-center text-light mt-2 mb-2">Jack</h6>
+                    <hr class="bg-light">
+                    <div class="p-3 m-1">
+                        <div class="alert alert-secondary pull-right shadow" role="alert">
+                            <h6><b>albert</b></h6>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quis, facilis adipisci totam
+                                eius optio
+                                officia, non ullam</p>
+                            <span>20th Ag.13:10</span>
+                        </div>
+                        <div class="alert alert-success pull-left shadow" role="alert">
+                            <h6><b>Jack</b></h6>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis fugiat natus ullam
+                                sunt fugit
+                                perferendis nostrum reprehenderit. Nostrum ipsum similique quis nisi repellendus
+                                incidunt eos,
+                                corrupti
+                                quo perspiciatis odit assumenda.F</p>
+                            <span>20th Ag.13:10</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <div class="input-group mb-3 mt-2 pr-2 pl-2">
+                        <input type="text" class="form-control" placeholder=""
+                               aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-success" type="submit"><i class="fa fa-send"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 bg-primary" id='request_list'>
+                <h5 class="text-center mt-2">Requests</h5>
+                <div>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">11</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">12</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">13</th>
+                            <td>Larry</td>
+                            <td>
+                                <button class="btn btn-success">Accept</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <hr>
+        <p class="text-center">chat application with django</p>
+        <hr>
+    </div>
+{% endblock %}

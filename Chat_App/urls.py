@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path( 'admin/', admin.site.urls ),
     path( '', include( 'chat.urls', namespace='chat' ) ),
+    path( '', include( 'chat_private.urls', namespace='chat_private' ) ),
     path( '', include( 'account.urls', namespace='account' ) ),
     path( 'forgot_password/', include( 'forgot_password.urls', namespace='forgot_password' ) ),
 ]

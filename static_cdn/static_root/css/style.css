@@ -39,7 +39,7 @@
     width: 80%;
 }
 
-#send-btn {
+#input-box button {
     border-radius: 100px;
 }
 
@@ -57,4 +57,27 @@
     50% {
         text-shadow: 0px 0px 30px green;
     }
+}
+
+/* private chat css */
+
+
+#contact_list {
+    overflow: auto;
+    height: 500px;
+}
+
+#request_list {
+    overflow: auto;
+    height: 500px;
+}
+
+#private_chat_col {
+    overflow-y: auto;
+    height: 500px;
+}
+
+#users_list {
+    overflow-y: auto;
+    height: 500px;
 }
