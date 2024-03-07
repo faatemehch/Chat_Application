@@ -32,9 +32,11 @@ def check_room(request):
         return redirect( '/' + room_name + '/?username=' + request.user.username )
     return redirect( 'chat:home-view' )
 
-
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+    
 def send_message(request):
-    if request.is_ajax():
+    if is_ajax(request):
         form_data, room_name = request.GET.get( ['form_data'][0] ), request.GET.get(
             ['room_name'][0] )  # data from send form
         room = Room.objects.get( room_name=room_name )
